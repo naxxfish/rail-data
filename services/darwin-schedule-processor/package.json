@@ -1,0 +1,11 @@
+{
+  "name": "darwin-schedule-processor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Chris Roberts <chris@naxxfish.eu>",
+  "license": "MIT",
+  "dependencies": {
+    "amqplib": "^0.5.2",
+    "nconf": "^0.10.0"
+  }
+}

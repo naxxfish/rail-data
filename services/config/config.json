@@ -1,0 +1,60 @@
+{
+	"networkRail": {
+		"stomp": {
+			"port": 61613,
+			"connectHeaders": {
+				"host": "/",
+				"login": "username",
+				"passcode": "password",
+				"heart-beat": "5000,5000"
+			}
+		}
+	},
+	"darwin": {
+		"ftp": {
+			"host": "datafeeds.nationalrail.co.uk",
+			"user": "ftpuser"
+		},
+		"stomp": {
+			"host": "datafeeds.nationalrail.co.uk",
+			"port": 61613,
+			"connectHeaders": {
+				"host": "/",
+				"login": "d3user"
+			}
+		},
+		"routes": {
+			"TS": {
+				"exchange": {
+					"destination": "darwin",
+					"type": "topic",
+					"routingKey": "ts"
+				}
+			},
+			"schedule": {
+				"exchange": {
+					"destination": "darwin",
+					"type": "topic",
+					"routingKey": "schedule"
+				}
+			},
+			"association": {
+				"exchange": {
+					"destination": "darwin",
+					"type": "topic",
+					"routingKey": "association"
+				}
+			},
+			"reference": {
+				"exchange": {
+					"destination": "darwin",
+					"type": "topic",
+					"routingKey": "reference"
+				}
+			}
+		}
+	},
+	"amqp": {
+		"uri": "amqp://localhost"
+	}
+}
