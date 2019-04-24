@@ -267,528 +267,528 @@ module.exports = {
         [// 22 
             "R176B", //Bit 0
             "R176A", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R174C", //Bit 2
+            "R174B", //Bit 3
+            "R174A", //Bit 4
+            "R173B", //Bit 5
+            "R173A", //Bit 6
+            "R172C"  //Bit 7  
         ],
 
 
         [// 23 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R172B", //Bit 0
+            "R172A", //Bit 1
+            "R171B", //Bit 2
+            "R171A", //Bit 3
+            "R170B", //Bit 4
+            "R170A", //Bit 5
+            "R168", //Bit 6
+            "R167B"  //Bit 7  
         ],
 
 
         [// 24 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R1270E", //Bit 0
+            "R1270D", //Bit 1
+            "R1270C", //Bit 2
+            "R1270B", //Bit 3
+            "R1270A", //Bit 4
+            "R205", //Bit 5
+            "R201B", //Bit 6
+            "R201A"  //Bit 7  
         ],
 
 
         [// 25 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R197B", //Bit 0
+            "R197A", //Bit 1
+            "R195", //Bit 2
+            "R184B", //Bit 3
+            "R184A", //Bit 4
+            "R182B", //Bit 5
+            "R182A", //Bit 6
+            "R180"  //Bit 7  
         ],
 
 
         [// 26 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
+            "R509", //Bit 0
+            "R1308C", //Bit 1
+            "R1308B", //Bit 2
+            "R1308A", //Bit 3
+            "R1307B", //Bit 4
+            "R1307A", //Bit 5
+            "R1306", //Bit 6
             ""  //Bit 7  
         ],
 
 
         [// 27 
             "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R1280D", //Bit 1
+            "R1280C", //Bit 2
+            "R1280B", //Bit 3
+            "R1280A", //Bit 4
+            "R1279", //Bit 5
+            "R1277", //Bit 6
+            "R1270F"  //Bit 7  
         ],
 
 
         [// 28 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R237D", //Bit 0
+            "R237C", //Bit 1
+            "R237B", //Bit 2
+            "R237A", //Bit 3
+            "R230", //Bit 4
+            "R219", //Bit 5
+            "R216C", //Bit 6
+            "R216B"  //Bit 7  
         ],
 
 
         [// 29 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R216A", //Bit 0
+            "R214", //Bit 1
+            "R212", //Bit 2
+            "R210", //Bit 3
+            "R208B", //Bit 4
+            "R208A", //Bit 5
+            "R206B", //Bit 6
+            "R206A"  //Bit 7  
         ],
 
 
         [// 30 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R249D", //Bit 0
+            "R249C", //Bit 1
+            "R249B", //Bit 2
+            "R249A", //Bit 3
+            "R248A", //Bit 4
+            "R247D", //Bit 5
+            "R247C", //Bit 6
+            "R247B"  //Bit 7  
         ],
 
 
         [// 31 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R247A", //Bit 0
+            "R244", //Bit 1
+            "R243", //Bit 2
+            "R241", //Bit 3
+            "R239C", //Bit 4
+            "R239B", //Bit 5
+            "R239A", //Bit 6
+            "R237E"  //Bit 7  
         ],
 
 
         [// 32 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R1231F", //Bit 0
+            "R1231D", //Bit 1
+            "R1231C", //Bit 2
+            "R1231B", //Bit 3
+            "R1231A", //Bit 4
+            "R1359", //Bit 5
+            "R1357", //Bit 6
+            "R1356A"  //Bit 7  
         ],
 
 
         [// 33 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R1314B", //Bit 0
+            "R1314A", //Bit 1
+            "R251D", //Bit 2
+            "R251C", //Bit 3
+            "R251B", //Bit 4
+            "R251A", //Bit 5
+            "R250B", //Bit 6
+            "R250A"  //Bit 7  
         ],
 
 
         [// 34 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R264A", //Bit 0
+            "R262C", //Bit 1
+            "R262B", //Bit 2
+            "R262A", //Bit 3
+            "R260C", //Bit 4
+            "R260B", //Bit 5
+            "R260A", //Bit 6
+            "R257B"  //Bit 7  
         ],
 
 
         [// 35 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R257A", //Bit 0
+            "R256", //Bit 1
+            "R254C", //Bit 2
+            "R254B", //Bit 3
+            "R254A", //Bit 4
+            "R253", //Bit 5
+            "R252B", //Bit 6
+            "R252A"  //Bit 7  
         ],
 
 
         [// 36 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R273B", //Bit 0
+            "R273A", //Bit 1
+            "R271C", //Bit 2
+            "R271B", //Bit 3
+            "R271A", //Bit 4
+            "R270B", //Bit 5
+            "R270A", //Bit 6
+            "R269D"  //Bit 7  
         ],
 
 
         [// 37 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R269C", //Bit 0
+            "R269B", //Bit 1
+            "R269A", //Bit 2
+            "R267", //Bit 3
+            "R266B", //Bit 4
+            "R266A", //Bit 5
+            "R264C", //Bit 6
+            "R264B"  //Bit 7  
         ],
 
 
         [// 38 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R1318C", //Bit 0
+            "R1318B", //Bit 1
+            "R279D", //Bit 2
+            "R279C", //Bit 3
+            "R279B", //Bit 4
+            "R279A", //Bit 5
+            "R278B", //Bit 6
+            "R278A"  //Bit 7  
         ],
 
 
         [// 39 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R1313B", //Bit 0
+            "R277D", //Bit 1
+            "R277C", //Bit 2
+            "R277B", //Bit 3
+            "R277A", //Bit 4
+            "R276B", //Bit 5
+            "R276A", //Bit 6
+            "R274"  //Bit 7  
         ],
 
 
         [// 40 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R295A", //Bit 0
+            "R295B", //Bit 1
+            "R294A", //Bit 2
+            "R289", //Bit 3
+            "R288B", //Bit 4
+            "R288A", //Bit 5
+            "R287", //Bit 6
+            "R284B"  //Bit 7  
         ],
 
 
         [// 41 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R284A", //Bit 0
+            "R282", //Bit 1
+            "R1252", //Bit 2
+            "R281", //Bit 3
+            "R1318D", //Bit 4
+            "R280C", //Bit 5
+            "R280B", //Bit 6
+            "R280A"  //Bit 7  
         ],
 
 
         [// 42 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R335C", //Bit 0
+            "R335B", //Bit 1
+            "R335A", //Bit 2
+            "R333C", //Bit 3
+            "R333B", //Bit 4
+            "R333A", //Bit 5
+            "R332B", //Bit 6
+            "R332A"  //Bit 7  
         ],
 
 
         [// 43 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R331", //Bit 0
+            "R330B", //Bit 1
+            "R330A", //Bit 2
+            "R297B", //Bit 3
+            "R297A", //Bit 4
+            "R296B", //Bit 5
+            "R295A", //Bit 6
+            "R295B"  //Bit 7  
         ],
 
 
         [// 44 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R348B", //Bit 0
+            "R348A", //Bit 1
+            "R347B", //Bit 2
+            "R347A", //Bit 3
+            "R345C", //Bit 4
+            "R345B", //Bit 5
+            "R345A", //Bit 6
+            "R344B"  //Bit 7  
         ],
 
 
         [// 45 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R334A", //Bit 0
+            "R343", //Bit 1
+            "R339", //Bit 2
+            "R336", //Bit 3
+            "R337", //Bit 4
+            "R336C", //Bit 5
+            "R336B", //Bit 6
+            "R336A"  //Bit 7  
         ],
 
 
         [// 46 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R369B", //Bit 0
+            "R269A", //Bit 1
+            "R368B", //Bit 2
+            "R368A", //Bit 3
+            "R367", //Bit 4
+            "R365", //Bit 5
+            "R351B", //Bit 6
+            "R351A"  //Bit 7  
         ],
 
 
         [// 47 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R350D", //Bit 0
+            "R350C", //Bit 1
+            "R350B", //Bit 2
+            "R350A", //Bit 3
+            "R349B", //Bit 4
+            "R349A", //Bit 5
+            "R348D", //Bit 6
+            "R348C"  //Bit 7  
         ],
 
 
         [// 48 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R423B", //Bit 0
+            "R423A", //Bit 1
+            "R422B", //Bit 2
+            "R422A", //Bit 3
+            "R421C", //Bit 4
+            "R421B", //Bit 5
+            "R421A", //Bit 6
+            "R420C"  //Bit 7  
         ],
 
 
         [// 49 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R420B", //Bit 0
+            "R420A", //Bit 1
+            "R371C", //Bit 2
+            "R371B", //Bit 3
+            "R371A", //Bit 4
+            "R370B", //Bit 5
+            "R370A", //Bit 6
+            "R369C"  //Bit 7  
         ],
 
 
         [// 50 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R434", //Bit 0
+            "R431B", //Bit 1
+            "R431A", //Bit 2
+            "R430B", //Bit 3
+            "R430A", //Bit 4
+            "R429C", //Bit 5
+            "R429B", //Bit 6
+            "R429A"  //Bit 7  
         ],
 
 
         [// 51 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R427C", //Bit 0
+            "R427B", //Bit 1
+            "R426A", //Bit 2
+            "R426B", //Bit 3
+            "R426A", //Bit 4
+            "R425C", //Bit 5
+            "R425B", //Bit 6
+            "R425A"  //Bit 7  
         ],
 
 
         [// 52 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R439", //Bit 0
+            "R438F", //Bit 1
+            "R438E", //Bit 2
+            "R438D", //Bit 3
+            "R438C", //Bit 4
+            "R438B", //Bit 5
+            "R438A", //Bit 6
+            "R436C"  //Bit 7  
         ],
 
 
         [// 53 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R436B", //Bit 0
+            "R436A", //Bit 1
+            "R435F", //Bit 2
+            "R435E", //Bit 3
+            "R435D", //Bit 4
+            "R435C", //Bit 5
+            "R435B", //Bit 6
+            "R435A"  //Bit 7  
         ],
 
 
         [// 54 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R444D", //Bit 0
+            "R444C", //Bit 1
+            "R444B", //Bit 2
+            "R444A", //Bit 3
+            "R442F", //Bit 4
+            "R442E", //Bit 5
+            "R442D", //Bit 6
+            "R442C"  //Bit 7  
         ],
 
 
         [// 55 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R442B", //Bit 0
+            "R442A", //Bit 1
+            "R440F", //Bit 2
+            "R440E", //Bit 3
+            "R440D", //Bit 4
+            "R440C", //Bit 5
+            "R440B", //Bit 6
+            "R440A"  //Bit 7  
         ],
 
 
         [// 56 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R475", //Bit 0
+            "R462", //Bit 1
+            "R461", //Bit 2
+            "R450B", //Bit 3
+            "R450A", //Bit 4
+            "R448E", //Bit 5
+            "R448D", //Bit 6
+            "R448C"  //Bit 7  
         ],
 
 
         [// 57 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R448B", //Bit 0
+            "R448A", //Bit 1
+            "R446E", //Bit 2
+            "R446D", //Bit 3
+            "R446C", //Bit 4
+            "R446B", //Bit 5
+            "R446A", //Bit 6
+            "R444E"  //Bit 7  
         ],
 
 
         [// 58 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R484A", //Bit 0
+            "R483G", //Bit 1
+            "R483F", //Bit 2
+            "R483E", //Bit 3
+            "R483D", //Bit 4
+            "R483C", //Bit 5
+            "R483B", //Bit 6
+            "R483A"  //Bit 7  
         ],
 
 
         [// 59 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R481C", //Bit 0
+            "R481B", //Bit 1
+            "R481A", //Bit 2
+            "R479C", //Bit 3
+            "R479B", //Bit 4
+            "R479A", //Bit 5
+            "R478", //Bit 6
+            "R477"  //Bit 7  
         ],
 
 
         [// 60 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R489E", //Bit 0
+            "R489D", //Bit 1
+            "R489C", //Bit 2
+            "R489B", //Bit 3
+            "R489A", //Bit 4
+            "R488C", //Bit 5
+            "R488B", //Bit 6
+            "R488A"  //Bit 7  
         ],
 
 
         [// 61 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R487B", //Bit 0
+            "R487A", //Bit 1
+            "R486", //Bit 2
+            "R485C", //Bit 3
+            "R485B", //Bit 4
+            "R485A", //Bit 5
+            "R484C", //Bit 6
+            "R484B"  //Bit 7  
         ],
 
 
         [// 62 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R495", //Bit 0
+            "R493F", //Bit 1
+            "R493E", //Bit 2
+            "R493D", //Bit 3
+            "R493C", //Bit 4
+            "R493B", //Bit 5
+            "R493A", //Bit 6
+            "R492D"  //Bit 7  
         ],
 
 
         [// 63 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R492C", //Bit 0
+            "R492B", //Bit 1
+            "R492A", //Bit 2
+            "R491", //Bit 3
+            "R490C", //Bit 4
+            "R490B", //Bit 5
+            "R490A", //Bit 6
+            "R489F"  //Bit 7  
         ],
 
 
         [// 64 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R353", //Bit 0
+            "R504B", //Bit 1
+            "R504A", //Bit 2
+            "R502D", //Bit 3
+            "R502C", //Bit 4
+            "R502B", //Bit 5
+            "R502A", //Bit 6
+            "R500D"  //Bit 7  
         ],
 
 
         [// 65 
-            "", //Bit 0
-            "", //Bit 1
-            "", //Bit 2
-            "", //Bit 3
-            "", //Bit 4
-            "", //Bit 5
-            "", //Bit 6
-            ""  //Bit 7  
+            "R500C", //Bit 0
+            "R500B", //Bit 1
+            "R500A", //Bit 2
+            "R497", //Bit 3
+            "R496D", //Bit 4
+            "R496C", //Bit 5
+            "R496B", //Bit 6
+            "R496A"  //Bit 7  
         ],
 
 
