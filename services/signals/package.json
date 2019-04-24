@@ -1,0 +1,12 @@
+{
+  "author": "Chris Roberts <chris@naxxfish.eu> (http://naxxfish.net/)",
+  "name": "rail-data-signals-service",
+  "scripts": {
+    "start": "node service.js"
+  },
+  "version": "0.1.0",
+  "dependencies": {
+    "mqtt": "^2.18.8",
+    "redis": "^2.8.0"
+  }
+}
