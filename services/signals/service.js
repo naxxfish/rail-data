@@ -20,7 +20,7 @@ redisClient.on('connect', () => {
 function signalUpdate(message) {
     const messageTime = new Date(parseInt(message.time))
     if (sop[message.area_id]) {
-        
+
         // convert the address into a integer (it's a hex string)
         const address = parseInt(message.address, 16)
         if (sop[message.area_id][address] === undefined) {
@@ -35,7 +35,7 @@ function signalUpdate(message) {
             data: data
         })*/
         // go through each bit and log the status of each signal
-        var redisMultiCommand = redisClient.multi()
+
         for (var i = 0; i < 8; i++) {
             const index = 0x1 << i
             const value = (index & data) > 0
@@ -44,13 +44,27 @@ function signalUpdate(message) {
                 continue;
             }
             const status = (value > 0) ? "ON" : "OFF"
-            redisMultiCommand = redisMultiCommand
-                .set(`status.${message.area_id}.${signal}`, status)
-                .set(`lastUpdate.${message.area_id}.${signal}`, messageTime)
-                .publish(`${message.area_id}.${signal}`, status)
-            console.log(`${messageTime} ${message.area_id} - ${signal} is ${status}`)
+            const statusSignalKey = `status.${message.area_id}.${signal}`
+            const lastUpdateSignalKey = `lastUpdate.${message.area_id}.${signal}`
+            redisClient.get(statusSignalKey, (err, currentValue) => {
+                if (err) {
+                    console.log("Redis error getting existing value " + err)
+                }
+                if (currentValue != status) {
+                    redisClient.multi()
+                        .set(statusSignalKey, status)
+                        .set(lastUpdateSignalKey, messageTime)
+                        .lpush(`${statusSignalKey}.history`, JSON.stringify({
+                            from: currentValue,
+                            to: status,
+                            time: messageTime
+                        }))
+                        .publish(statusSignalKey, status)
+                        .exec()
+                    console.log(`${messageTime} ${message.area_id} - ${signal} is ${status}`)
+                }
+            })
         }
-        redisMultiCommand.exec()
 
     } else {
         //console.log(`No SOP entry for area ${message.area_id}`)
