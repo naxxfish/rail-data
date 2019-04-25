@@ -1,0 +1,13 @@
+{
+  "author": "Chris Roberts <chris@naxxfish.eu> (http://naxxfish.net/)",
+  "name": "",
+  "version": "",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "redis": "^2.8.0",
+    "restify": "^8.3.1"
+  }
+}

@@ -1,9 +1,15 @@
 version: "2"
 services:
-  ingest_processor:
-    build: .
+  signals_ingest_processor:
+    build: signal_ingest
     environment:
       MQTT_HOST: host.docker.internal
       REDIS_HOST: signals_db
+  signals_api:
+    build: signal_api
+    environment:
+      REDIS_HOST: signals_db
+    ports:
+      - "3000:3000"
   signals_db:
     image: redis
