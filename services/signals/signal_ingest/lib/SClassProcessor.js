@@ -42,7 +42,7 @@ function signalUpdate (message, redisClient) {
         if (currentValue !== status) {
           redisClient.multi()
             .set(statusSignalKey, status)
-            .set(lastUpdateSignalKey, messageTime)
+            .set(lastUpdateSignalKey, messageTime.toISOString())
             .lpush(`history.${statusSignalKey}`, JSON.stringify({
               from: currentValue,
               to: status,
