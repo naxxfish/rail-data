@@ -8,7 +8,7 @@ const SClassProcessor = require('./lib/SClassProcessor')
 
 mqttClient.on('connect', () => {
   // maybe subscribe to any TD topics ..
-  mqttClient.subscribe('TD_SUSS_SIG_AREA', function (err) {
+  mqttClient.subscribe('TD_ALL_SIG_AREA', function (err) {
     if (!err) {
       console.log('Subscribed OK!')
     }

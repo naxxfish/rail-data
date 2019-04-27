@@ -1,6 +1,6 @@
 const sop = require('../reference/sop.js')
 
-function handleSClassMessage(message, redisClient) {
+function handleSClassMessage (message, redisClient) {
   const messageType = Object.keys(message)[0]
   switch (messageType) {
     case 'SF_MSG':
