@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "bunyan": "^1.8.12",
+    "bunyan-winston-adapter": "^0.2.0",
     "nconf": "^0.10.0",
     "redis": "^2.8.0",
-    "restify": "^8.3.1"
+    "restify": "^8.3.1",
+    "winston": "^3.2.1"
   }
 }

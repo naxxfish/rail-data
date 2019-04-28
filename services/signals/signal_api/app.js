@@ -1,6 +1,8 @@
 const nconf = require('nconf')
 const restify = require('restify')
 const redis = require('redis')
+const bunyanWinston = require('bunyan-winston-adapter')
+const logger = require('./log')
 
 nconf.argv()
   .env('__')
@@ -15,10 +17,14 @@ const redisClient = redis.createClient({
   'port': nconf.get('signals_redis:port') || 6379
 })
 
-const server = restify.createServer()
-
+const server = restify.createServer({
+  name: 'signal-api',
+  version: '0.0.1',
+  log: bunyanWinston.createAdapter(logger)
+})
+server.use(restify.fullResponse())
 require('./routes/signals')(server, redisClient)
 
 server.listen(3000, () => {
-  console.log(`${server.name} listening on ${server.url}`)
+  logger.log('info', `${server.name} listening on ${server.url}`)
 })
