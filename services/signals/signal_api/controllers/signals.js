@@ -1,7 +1,7 @@
 function getSignal (redisClient, areaId, signalId, res, next) {
   redisClient.mget([
-    `status.${areaId}.${signalId}`,
-    `lastUpdate.${areaId}.${signalId}`
+    `signal.${areaId}.${signalId}.status`,
+    `signal.${areaId}.${signalId}.lastUpdate`
   ], (err, [ status, lastUpdateTime ]) => {
     if (err) {
       res.send({ 'error': err })
