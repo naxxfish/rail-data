@@ -1,6 +1,6 @@
-FROM node
+FROM node:10.15.3
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-RUN npm install
-EXPOSE 3000
-CMD [ "npm", "start" ]
+ENV NODE_ENV=production
+RUN npm install --only=production
+CMD [ "node", "app.js" ]
