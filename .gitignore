@@ -69,3 +69,5 @@ typings/
 # Ignore the config files that are distributed to the services when they're built, but not the one in the root
 *config.json
 !/config/config.json
+
+old
