@@ -41,6 +41,7 @@ function applySignalUpdate (areaId, signalId, status, messageTime, redisClient) 
           to: status,
           time: messageTime.toISOString()
         }))
+        .ltrim(historySignalKey, 0, 199)
         .publish(statusSignalKey, status)
         .exec()
       logger.log('debug',
