@@ -27,9 +27,9 @@ function getSignal (redisClient, areaId, signalId, res, next) {
 
 function getSignalHistory (redisClient, areaId, signalId, res, next) {
   redisClient.multi()
-    .get(`status.${areaId}.${signalId}`)
-    .get(`lastUpdate.${areaId}.${signalId}`)
-    .lrange(`history.status.${areaId}.${signalId}`, 0, -1)
+    .get(`signal.${areaId}.${signalId}.status`)
+    .get(`signal.${areaId}.${signalId}.lastUpdate`)
+    .lrange(`signal.${areaId}.${signalId}.history`, 0, -1)
     .exec((err, [ status, lastUpdateTime, history ]) => {
       if (err) {
         res.send({ 'error': err })

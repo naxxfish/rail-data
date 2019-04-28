@@ -1,8 +1,18 @@
+const nconf = require('nconf')
 const restify = require('restify')
 const redis = require('redis')
+
+nconf.argv()
+  .env('__')
+  .file('./config.json')
+
+nconf.required([
+  'signals_redis:host'
+])
+
 const redisClient = redis.createClient({
-  'host': process.env.REDIS_HOST || 'localhost',
-  'port': process.env.REDIS_PORT || 6379
+  'host': nconf.get('signals_redis:host'),
+  'port': nconf.get('signals_redis:port') || 6379
 })
 
 const server = restify.createServer()

@@ -1,12 +1,15 @@
 {
   "author": "Chris Roberts <chris@naxxfish.eu> (http://naxxfish.net/)",
-  "name": "rail-data-signals-service",
+  "name": "rail-data-signal-ingest-service",
+  "description": "Applies S-class TD messages to a Redis DB to reflect signal states",
   "scripts": {
     "start": "node service.js"
   },
   "version": "0.1.0",
   "dependencies": {
-    "mqtt": "^2.18.8",
-    "redis": "^2.8.0"
+    "amqplib": "^0.5.3",
+    "nconf": "^0.10.0",
+    "redis": "^2.8.0",
+    "winston": "^3.2.1"
   }
 }
