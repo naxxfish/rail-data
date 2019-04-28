@@ -6,8 +6,12 @@
     "start": "node service.js"
   },
   "dependencies": {
+    "amqplib": "^0.5.3",
     "nconf": "^0.10.0",
+    "prom-client": "^11.3.0",
     "rabbot": "^2.1.0",
-    "stompit": "^0.26.0"
+    "restify": "^8.3.1",
+    "stompit": "^0.26.0",
+    "winston": "^3.2.1"
   }
 }
