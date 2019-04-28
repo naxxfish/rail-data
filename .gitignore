@@ -65,3 +65,7 @@ typings/
 
 # Mac rubbish
 .DS_Store
+
+# Ignore the config files that are distributed to the services when they're built, but not the one in the root
+*config.json
+!/config/config.json

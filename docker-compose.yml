@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+  signal_ingest:
+    build: ./services/signals/signal_ingest
+    restart: 'on-failure'
+    environment:
+      broker__host: broker
+      broker__username: ${RAILDATA_BROKER_USER}
+      broker__password: ${RAILDATA_BROKER_PASSWORD}
+      signals_redis__host: signal_db
+    depends_on: 
+      - signal_db
+      - broker
+  signal_db:
+    image: redis
+  signals_api:
+    build: ./services/signals/signal_api
+    environment:
+      signals_redis__host: signal_db
+    depends_on: 
+      - signal_db
+    ports:
+      - "3005:3000"
+  stomp-bridge:
+    build: ./services/stomp-bridge
+    restart: 'on-failure'
+    environment:
+      broker__host: broker
+      broker__username: ${RAILDATA_BROKER_USER}
+      broker__password: ${RAILDATA_BROKER_PASSWORD}
+      feeds__networkrail__username: ${NETWORKRAIL_USER}
+      feeds__networkrail__password: ${NETWORKRAIL_PASSWORD}
+      feeds__networkrail__durablity: ${NETWORKRAIL_DURABLE}
+    depends_on:
+      - broker
+  broker:
+    hostname: "broker"
+    build: ./broker/
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RAILDATA_BROKER_USER}
+      RABBITMQ_DEFAULT_PASS: ${RAILDATA_BROKER_PASSWORD}
