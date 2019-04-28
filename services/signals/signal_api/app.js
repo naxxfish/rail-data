@@ -22,7 +22,7 @@ const server = restify.createServer({
   version: '0.0.1',
   log: bunyanWinston.createAdapter(logger)
 })
-server.use(restify.fullResponse())
+
 require('./routes/signals')(server, redisClient)
 
 server.listen(3000, () => {
