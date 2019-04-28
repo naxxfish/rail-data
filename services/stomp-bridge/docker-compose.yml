@@ -1,0 +1,21 @@
+version: "2"
+services:
+  stomp-bridge:
+    build: .
+    restart: 'on-failure'
+    environment:
+      broker__host: rabbitmq
+      broker__username: 'stomp-bridge-user'
+      broker__password: 'abc123'
+      feeds__networkrail__username: 'chris@naxxfish.eu'
+      feeds__networkrail__password: '3BArWSF9x3Z^aK%'
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: 'stomp-bridge-user'
+      RABBITMQ_DEFAULT_PASS: 'abc123'
+    ports:
+      - "5672"
+      - "15672:15672"
+

@@ -1,0 +1,13 @@
+{
+  "author": "Chris Roberts <chris@naxxfish.eu> (http://naxxfish.net/)",
+  "name": "rail-data-stomp-bridge",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node service.js"
+  },
+  "dependencies": {
+    "nconf": "^0.10.0",
+    "rabbot": "^2.1.0",
+    "stompit": "^0.26.0"
+  }
+}

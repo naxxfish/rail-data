@@ -1,0 +1,42 @@
+{
+  "broker": {
+    "port": 5672
+  },
+  "feeds": {
+      "networkrail": {
+        "system_name":"naxxfish-rail-data-test",
+        "host": "datafeeds.networkrail.co.uk",
+        "port": 61618,
+        "durability": true,
+        "subscriptions": [
+          {
+            "id":"td",
+            "remoteTopic":"/topic/TD_ALL_SIG_AREA",
+            "local": {
+              "exchangeType": "topic",
+              "exchangeName": "amq.topic",
+              "routingKey":"td"
+            }
+          },
+          {
+            "id":"vtsp",
+            "remoteTopic":"/topic/VSTP_ALL",
+            "local": {
+              "exchangeType": "topic",
+              "exchangeName": "amq.topic",
+              "routingKey": "vstp"
+            }
+          },
+          {
+            "id":"rtppm",
+            "remoteTopic":"/topic/RTPPM_ALL",
+            "local": {
+              "exchangeType": "topic",
+              "exchangeName": "networkrail",
+              "routingKey": "rtppm"
+            }
+          }
+        ]
+      }
+    }
+}
