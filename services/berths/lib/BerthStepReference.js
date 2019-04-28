@@ -3,6 +3,7 @@ const path = require('path')
 const zlib = require('zlib')
 const JSONStream = require('JSONStream')
 const es = require('event-stream')
+const logger = require('../log.js')
 
 const appDir = path.dirname(require.main.filename)
 var berthData = null
