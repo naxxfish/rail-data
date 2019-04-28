@@ -1,5 +1,13 @@
 version: "3.7"
 services:
+  gateway:
+    build: ./gateway
+    restart: 'always'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - signal_api
+      - berth_api
   signal_ingest:
     build: ./services/signals/signal_ingest
     restart: 'on-failure'
@@ -11,22 +19,30 @@ services:
     depends_on: 
       - td_db
       - broker
-  signals_api:
+  signal_api:
     build: ./services/signals/signal_api
     environment:
       signals_redis__host: td_db
     depends_on: 
       - td_db
     ports:
-      - "3005:3000"
-  berths_ingest_processor:
-    build: ./services/berths
+      - "3000"
+  berth_ingest:
+    build: ./services/berths/berth_ingest
     restart: 'on-failure'
     environment:
       broker__host: broker
       broker__username: ${RAILDATA_BROKER_USER}
       broker__password: ${RAILDATA_BROKER_PASSWORD}
       berths_redis__host: td_db
+  berth_api:
+    build: ./services/berths/berth_api
+    environment:
+      berths_redis__host: td_db
+    depends_on: 
+      - td_db
+    ports:
+      - "3000"
   td_db:
     image: redis
   stomp-bridge:
@@ -39,6 +55,7 @@ services:
       feeds__networkrail__username: ${NETWORKRAIL_USER}
       feeds__networkrail__password: ${NETWORKRAIL_PASSWORD}
       feeds__networkrail__durablity: ${NETWORKRAIL_DURABLE}
+      feeds__networkrail__system_name: ${RAILDATA_SYSTEMNAME}
     depends_on:
       - broker
   broker:
@@ -46,7 +63,7 @@ services:
     build: ./broker/
     ports:
       - "15672:15672"
-      - "5672:5672"
+      - "5672"
     environment:
       RABBITMQ_DEFAULT_USER: ${RAILDATA_BROKER_USER}
       RABBITMQ_DEFAULT_PASS: ${RAILDATA_BROKER_PASSWORD}
