@@ -1,10 +1,10 @@
 // b783f430-3e56-4c6b-9b35-2610d1d4f148
-const winston = require('winston')
 const amqp = require('amqplib')
 const Prometheus = require('prom-client')
 const Stomp = require('stompit')
 const nconf = require('nconf')
 const restify = require('restify')
+const logger = require('./log')
 
 // restify server for the purposes of serving Prometheus
 const restifyServer = restify.createServer()
@@ -17,14 +17,6 @@ restifyServer.listen(3000, () => {
   logger.log('info', `Restify server listening on ${restifyServer.url}`)
 })
 // Prometheus.collectDefaultMetrics({ timeout: 5000 })
-
-const logger = winston.createLogger({
-  transports: [
-    new winston.transports.Console({
-      level: 'debug'
-    })
-  ]
-})
 
 nconf.argv()
   .env('__')
@@ -42,7 +34,7 @@ nconf.required([
   'feeds:networkrail:password'
 ])
 
-function dieGracefully(amqChannel, stompConnection) {
+function dieGracefully (amqChannel, stompConnection) {
   if (amqChannel) {
     amqChannel.close()
   }
@@ -109,7 +101,7 @@ amqp.connect({
               'errors': Prometheus.register.getSingleMetric(`${subscription}_errors`).hashMap[''].value
             })
           })
-          logger.log('info', metrics)
+          logger.log('info', { message: metrics })
         }, 10 * 1000)
         const subscriptions = nconf.get('feeds:networkrail:subscriptions')
         if (clientNetworkRail !== null) {
