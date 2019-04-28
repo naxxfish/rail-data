@@ -1,6 +1,11 @@
 const mqtt = require('mqtt')
-const mqttClient = mqtt.connect(`mqtt://${process.env['MQTT_HOST']}:1883`)
-const redis = require("redis")
+const mqttClient = mqtt.connect(`mqtt://${process.env['MQTT_HOST']}:1883`, {
+  username: process.env['MQTT_USERNAME'],
+  password: process.env['MQTT_PASSWORD']
+})
+
+const redis = require('redis')
+
 const redisClient = redis.createClient({
   host: process.env['REDIS_HOST']
 })
@@ -8,9 +13,11 @@ const SClassProcessor = require('./lib/SClassProcessor')
 
 mqttClient.on('connect', () => {
   // maybe subscribe to any TD topics ..
-  mqttClient.subscribe('TD_ALL_SIG_AREA', function (err) {
+  mqttClient.subscribe('td', function (err) {
     if (!err) {
       console.log('Subscribed OK!')
+    } else {
+      console.log('Error connecting to MQTT ' + err)
     }
   })
 })
