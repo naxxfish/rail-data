@@ -7,20 +7,28 @@ services:
       broker__host: broker
       broker__username: ${RAILDATA_BROKER_USER}
       broker__password: ${RAILDATA_BROKER_PASSWORD}
-      signals_redis__host: signal_db
+      signals_redis__host: td_db
     depends_on: 
-      - signal_db
+      - td_db
       - broker
-  signal_db:
-    image: redis
   signals_api:
     build: ./services/signals/signal_api
     environment:
-      signals_redis__host: signal_db
+      signals_redis__host: td_db
     depends_on: 
-      - signal_db
+      - td_db
     ports:
       - "3005:3000"
+  berths_ingest_processor:
+    build: ./services/berths
+    restart: 'on-failure'
+    environment:
+      broker__host: broker
+      broker__username: ${RAILDATA_BROKER_USER}
+      broker__password: ${RAILDATA_BROKER_PASSWORD}
+      berths_redis__host: td_db
+  td_db:
+    image: redis
   stomp-bridge:
     build: ./services/stomp-bridge
     restart: 'on-failure'
