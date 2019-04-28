@@ -5,10 +5,12 @@
     "protocol":"amqp"
   },
   "signals_redis": {
-    "host":"signal_db"
+    "host":"signal_db",
+    "port": 6379
   },
   "berths_redis": {
-    "host":"berth_db"
+    "host":"berth_db",
+    "port": 6379
   },
   "feeds": {
       "networkrail": {
