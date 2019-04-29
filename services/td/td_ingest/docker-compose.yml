@@ -1,9 +1,0 @@
-version: "2"
-services:
-  berths_ingest_processor:
-    build: .
-    environment:
-      MQTT_HOST: host.docker.internal
-      REDIS_HOST: berths_db
-  berths_db:
-    image: redis
