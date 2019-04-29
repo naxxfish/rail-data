@@ -9,7 +9,7 @@ const logger = winston.createLogger({
     winston.format.json()
   ),
   defaultMeta: {
-    service: 'berth-ingest'
+    service: 'td-api'
   },
   transports: [
     new winston.transports.Console({

@@ -1,9 +1,11 @@
 {
   "author": "Chris Roberts <chris@naxxfish.eu> (http://naxxfish.net/)",
-  "name": "rail-data-berths-service",
+  "name": "rail-data-td-ingest-service",
+  "description": "Ingests Train Describer feed from Network Rail datafeeds and presents it via an API",
   "version": "0.1.0",
   "scripts": {
-    "start": "node service.js"
+    "start": "node service.js",
+    "test": "standard"
   },
   "dependencies": {
     "JSONStream": "^1.3.5",
@@ -13,5 +15,8 @@
     "nconf": "^0.10.0",
     "redis": "^2.8.0",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
   }
 }

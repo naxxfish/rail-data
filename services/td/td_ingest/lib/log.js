@@ -9,7 +9,7 @@ const logger = winston.createLogger({
     winston.format.json()
   ),
   defaultMeta: {
-    service: 'signal-ingest'
+    service: 'td-ingest'
   },
   transports: [
     new winston.transports.Console({

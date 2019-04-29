@@ -1,7 +1,47 @@
 // const BerthStepReference = require('./BerthStepReference')
-const logger = require('../log.js')
+const logger = require('./log')
 
 var messagesProcessed = 0
+
+exports.parseMessage = function handleSClassMessage (message, redisClient) {
+  const messageType = message.msg_type
+  switch (messageType) {
+    case 'CA':
+      berthStep(message, redisClient)
+      logger.log('debug',
+        { 'action': 'berth_step',
+          'area_id': message.area_id
+        })
+      break
+    case 'CB':
+      berthCancel(message, redisClient)
+      logger.log('debug',
+        { 'action': 'berth_cancel',
+          'area_id': message.area_id
+        })
+      break
+    case 'CC':
+      berthInterpose(message, redisClient)
+      logger.log('debug',
+        { 'action': 'berth_interpose',
+          'area_id': message.area_id
+        })
+      break
+    case 'CT':
+      tdHeartbeat(message, redisClient)
+      logger.log('debug',
+        { 'action': 'berth_heartbeat',
+          'area_id': message.area_id
+        })
+        break
+    default:
+      logger.log('error', `unknown C class message! ${messageType}`)
+  }
+  messagesProcessed++
+  if ((messagesProcessed % 1000) === 0) {
+    logger.log('info', `Processed ${messagesProcessed} C-class messages`)
+  }
+}
 
 async function berthStep (message, redisClient) {
   const toBerthKey = `berth.${message.area_id}.${message.to}`
@@ -63,25 +103,4 @@ function tdHeartbeat (message, redisClient) {
   })
 }
 
-module.exports = {
-  parseMessage: function (message, redisClient) {
-    const messageType = Object.keys(message)[0]
-    switch (messageType) {
-      case 'CA_MSG':
-        berthStep(message[messageType], redisClient)
-        break
-      case 'CB_MSG':
-        berthCancel(message[messageType], redisClient)
-        break
-      case 'CC_MSG':
-        berthInterpose(message[messageType], redisClient)
-        break
-      case 'CT_MSG':
-        tdHeartbeat(message[messageType], redisClient)
-    }
-    messagesProcessed++
-    if ((messagesProcessed % 1000) === 0) {
-      logger.log('info', `Processed ${messagesProcessed} C-class messages`)
-    }
-  }
-}
+

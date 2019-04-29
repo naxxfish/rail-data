@@ -3,7 +3,7 @@ const path = require('path')
 const zlib = require('zlib')
 const JSONStream = require('JSONStream')
 const es = require('event-stream')
-const logger = require('../log.js')
+const logger = require('./log')
 
 const appDir = path.dirname(require.main.filename)
 var berthData = null
@@ -13,10 +13,10 @@ function initialise () {
     const SMARTDataFilePath = path.join(appDir, '/reference/SMARTExtract.json.gz')
     fs.stat(SMARTDataFilePath, (err, stats) => {
       if (err) {
-        console.log('Please visit http://datafeeds.networkrail.co.uk/ntrod/SupportingFileAuthenticate?type=SMART and download the SMARTExtract.json.gz to the reference folder')
+        logger.log('error', 'Please visit http://datafeeds.networkrail.co.uk/ntrod/SupportingFileAuthenticate?type=SMART and download the SMARTExtract.json.gz to the reference folder')
         reject(new Error('Could not load SMART data'))
       }
-      console.log('importing time!')
+      logger.log('info', 'importing reference data')
       const gunzip = zlib.createGunzip()
       const SMARTDataFileStream = fs.createReadStream(SMARTDataFilePath).pipe(gunzip)
       SMARTDataFileStream
@@ -30,7 +30,7 @@ function initialise () {
   })
 }
 
-function parseStepEvent(stepEvent) {
+function parseStepEvent (stepEvent) {
   var eventType = null
   var eventDirection = null
   switch (stepEvent.EVENT) {
@@ -112,7 +112,7 @@ function getBerthStep (areaId, fromBerth, toBerth) {
         resolved = true
       }
     })
-    // if we cannot find the step event, then it is missing - but there is no error 
+    // if we cannot find the step event, then it is missing - but there is no error
     if (!resolved) {
       resolve(null)
     }

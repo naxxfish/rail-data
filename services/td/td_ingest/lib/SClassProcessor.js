@@ -1,26 +1,38 @@
 const sop = require('../reference/sop.js')
-const logger = require('../log.js')
+const logger = require('./log')
 
-function hangleSClassMessage (message, redisClient) {
-  const messageType = Object.keys(message)[0]
+var messagesProcessed = 0
+
+exports.parseMessage = function hangleSClassMessage (message, redisClient) {
+  const messageType = message.msg_type
   switch (messageType) {
-    case 'SF_MSG':
-      signalUpdate(message[messageType], redisClient)
-      break
-    case 'SG_MSG':
-      signalRefresh(message[messageType], redisClient)
+    case 'SF':
+      singleSignalUpdate(message, redisClient)
       logger.log('debug',
-        { 'action': 'signal_refresh',
-          'area_id': message[messageType].area_id
+        { 'td_action': 'signal_update',
+          'area_id': message.area_id
         })
       break
-    case 'SH_MSG':
-      signalRefresh(message[messageType], redisClient)
+    case 'SG':
+      signalRefresh(message, redisClient)
       logger.log('debug',
-        { 'action': 'signal_refresh_finished',
-          'area_id': message[messageType].area_id
+        { 'td_action': 'signal_refresh',
+          'area_id': message.area_id
         })
       break
+    case 'SH':
+      signalRefresh(message, redisClient)
+      logger.log('debug',
+        { 'td_action': 'signal_refresh_finished',
+          'area_id': message.area_id
+        })
+      break
+    default:
+      logger.log('error', `unknown S class message! ${messageType}`)
+  }
+  messagesProcessed++
+  if ((messagesProcessed % 1000) === 0) {
+    logger.log('info', `Processed ${messagesProcessed} S-class messages`)
   }
 }
 
@@ -84,7 +96,7 @@ function decodeSignalStates (areaId, rawAddress, rawData) {
   return signals
 }
 
-function signalUpdate (message, redisClient) {
+function singleSignalUpdate (message, redisClient) {
   const messageTime = new Date(parseInt(message.time))
   const signals = decodeSignalStates(message.area_id, message.address, message.data)
   signals.forEach((signal) => {
@@ -93,10 +105,9 @@ function signalUpdate (message, redisClient) {
 }
 
 function signalRefresh (message, redisClient) {
-  // {"SG_MSG":{"time":"1422404915000","area_id":"RW","address":"00","msg_type":"SG","data":"06880306"}}
   const messageTime = new Date(parseInt(message.time))
   const startAddress = parseInt(message.address, 16)
-  logger.log('debug', `${message.area_id} refresh starting at address ${message.address} with data ${message.data}`)
+  logger.log('info', `${message.area_id} refresh starting at address ${message.address} with data ${message.data}`)
   // SG/H messages contain 4 bytes
   for (var i = 0; i < 8; i += 2) {
     const data = parseInt(message.data.substring(i, i + 2), 16)
@@ -108,8 +119,4 @@ function signalRefresh (message, redisClient) {
       applySignalUpdate(message.area_id, signal.signalId, signal.status, messageTime, redisClient)
     })
   }
-}
-
-module.exports = {
-  handleSClassMessage: hangleSClassMessage
 }

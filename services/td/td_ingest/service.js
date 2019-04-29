@@ -1,9 +1,6 @@
+const logger = require('./lib/log')
 const amqp = require('amqplib')
 const nconf = require('nconf')
-const logger = require('./log')
-
-const SClassProcessor = require('./lib/SClassProcessor')
-
 nconf.argv()
   .env('__')
   .file('./config.json')
@@ -14,20 +11,39 @@ nconf.required([
   'broker:username',
   'broker:password',
   'broker:protocol',
-  'signals_redis:host'
+  'td_redis:host'
 ])
 
 const redis = require('redis')
-
 const redisClient = redis.createClient({
-  host: nconf.get('signals_redis:host')
+  host: nconf.get('td_redis:host')
 })
 
-function onTDMessage (message) {
-  var TDmessages = JSON.parse(message.content.toString())
-  TDmessages.forEach((message) => {
-    SClassProcessor.handleSClassMessage(message, redisClient)
-  })
+const CClassProcessor = require('./lib/CClassProcessor')
+const SClassProcessor = require('./lib/SClassProcessor')
+
+function onTDMessage (recievedMessageFromBroker) {
+  try {
+    var TDmessages = JSON.parse(recievedMessageFromBroker.content.toString())
+    TDmessages.forEach((messageFromTDMessageArray) => {
+      // Each object has a single property, who's key is the type of message it is
+      // however, each object also has a msg_type property within it too with the actual message type!
+      const message = messageFromTDMessageArray[Object.keys(messageFromTDMessageArray)[0]]
+      if (message.msg_type.startsWith('C')) {
+        CClassProcessor.parseMessage(message, redisClient)
+      } else if (message.msg_type.startsWith('S')) {
+        SClassProcessor.parseMessage(message, redisClient)
+      } else {
+        logger.log('error', `Unknown TD message recieved: ${message.type}`)
+      }
+    })
+  } catch (e) {
+    logger.log('error', {
+      'error': 'Error parsing message from TD',
+      'message': recievedMessageFromBroker.content.toString(),
+      'e': e
+    })
+  }
 }
 
 amqp.connect({
@@ -37,7 +53,7 @@ amqp.connect({
   password: nconf.get('broker:password'),
   protocol: nconf.get('broker:protocol')
 }).then(async (connection) => {
-  logger.log('info', `Connected to broker at ${nconf.get('broker:host')}:${nconf.get('broker:port')}`)
+  logger.log('info', `Connected to RabbitMQ at ${nconf.get('broker:host')}:${nconf.get('broker:port')}`)
   // close the connection nicely if we are killed
   process.once('SIGINT', () => { connection.close() })
   const channel = await connection.createChannel()
@@ -51,18 +67,17 @@ amqp.connect({
     .then((queueOk) => {
       return channel.bindQueue(
         queueOk.queue,
-        nconf.get('feeds:networkrail:subscriptions:td:local:exchangeName'), 
+        nconf.get('feeds:networkrail:subscriptions:td:local:exchangeName'),
         nconf.get('feeds:networkrail:subscriptions:td:local:routingKey'))
         .then(() => {
           return queueOk.queue
         })
     })
     .then((queue) => {
-      logger.log('info', `Subscribed to queue ${queue}`)
       return channel.consume(queue, onTDMessage, { noAck: true })
     })
     .then(() => {
-      logger.log('info', 'Ready to consume messages')
+      logger.log('info', 'Subscribed to queue')
     })
 }).catch((error) => {
   logger.log('error', `Error connecting to broker: ${error}`)

@@ -6,39 +6,22 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - signal_api
-      - berth_api
-  signal_ingest:
-    build: ./services/signals/signal_ingest
+      - td_api
+  td_ingest:
+    build: ./services/td/td_ingest
     restart: 'on-failure'
     environment:
       broker__host: broker
       broker__username: ${RAILDATA_BROKER_USER}
       broker__password: ${RAILDATA_BROKER_PASSWORD}
-      signals_redis__host: td_db
-    depends_on: 
-      - td_db
+      td_redis__host: td_db
+    depends_on:
       - broker
-  signal_api:
-    build: ./services/signals/signal_api
-    environment:
-      signals_redis__host: td_db
-    depends_on: 
-      - td_db
-    ports:
-      - "3000"
-  berth_ingest:
-    build: ./services/berths/berth_ingest
+  td_api:
+    build: ./services/td/td_api
     restart: 'on-failure'
     environment:
-      broker__host: broker
-      broker__username: ${RAILDATA_BROKER_USER}
-      broker__password: ${RAILDATA_BROKER_PASSWORD}
-      berths_redis__host: td_db
-  berth_api:
-    build: ./services/berths/berth_api
-    environment:
-      berths_redis__host: td_db
+      td_redis__host: td_db
     depends_on: 
       - td_db
     ports:
