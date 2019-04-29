@@ -33,7 +33,7 @@ exports.parseMessage = function handleSClassMessage (message, redisClient) {
         { 'action': 'berth_heartbeat',
           'area_id': message.area_id
         })
-        break
+      break
     default:
       logger.log('error', `unknown C class message! ${messageType}`)
   }
@@ -102,5 +102,3 @@ function tdHeartbeat (message, redisClient) {
     'report_time': message.report_time
   })
 }
-
-
