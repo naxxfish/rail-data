@@ -1,6 +1,6 @@
 var numSlots = 137
 for (var i = 0; i < numSlots; i++) {
-    console.log(`
+  console.log(`
     [// ${i} 
         "", //Bit 0
         "", //Bit 1
