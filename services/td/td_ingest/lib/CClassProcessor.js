@@ -50,7 +50,8 @@ async function berthStep (message, redisClient) {
   redisClient.multi()
     .set(toBerthKey, trainDescription)
     .set(fromBerthKey, '')
-    .publish(toBerthKey, trainDescription)
+    .publish(toBerthKey, JSON.stringify({ 'berth': message.to, 'descr': trainDescription }))
+    .publish(fromBerthKey, JSON.stringify({ 'berth': message.from, 'descr': '' }))
     .exec()
   logger.log('debug', {
     'action': 'step',
@@ -67,7 +68,7 @@ function berthInterpose (message, redisClient) {
   const trainDescription = message.descr
   redisClient.multi()
     .set(toBerthKey, trainDescription)
-    .publish(toBerthKey, trainDescription)
+    .publish(toBerthKey, JSON.stringify({ 'berth': message.to, 'descr': trainDescription }))
     .exec()
   logger.log('debug', {
     'action': 'interpose',
@@ -81,6 +82,7 @@ function berthCancel (message, redisClient) {
   const fromBerthKey = `berth.${message.area_id}.${message.from}`
   redisClient.multi()
     .set(fromBerthKey, '')
+    .publish(fromBerthKey, JSON.stringify({ 'berth': message.from, 'descr': '' }))
     .exec()
   logger.log('debug', {
     'action': 'cancel',
@@ -92,9 +94,13 @@ function berthCancel (message, redisClient) {
 
 function tdHeartbeat (message, redisClient) {
   const messageTime = new Date(parseInt(message.time))
+  const tdKeyLastReportTimeKey = `td.${message.area_id}.lastReportTime`
+  const tdLastHeartbeatTime = `td.${message.area_id}.lastHeartbeatTime`
+  const tdHearbeatTopic = `td.${message.area_id}.heartbeat`
   redisClient.multi()
-    .set(`td.${message.area_id}.lastReportTime`, message.report_time)
-    .set(`td.${message.area_id}.lastHeartbeatTime`, messageTime.toISOString())
+    .set(tdKeyLastReportTimeKey, message.report_time)
+    .set(tdLastHeartbeatTime, messageTime.toISOString())
+    .publish(tdHearbeatTopic, JSON.stringify({'td':message.area_id, 'lastReportTime': message.report_time, 'messageTime': messageTime.toISOString()}))
     .exec()
   logger.log('debug', {
     'action': 'heartbeat',

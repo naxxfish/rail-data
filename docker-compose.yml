@@ -3,6 +3,8 @@ services:
   gateway:
     build: ./gateway
     restart: 'always'
+    volumes:
+      - ./static-demos:/etc/nginx/html/
     ports:
       - "3000:3000"
     depends_on:

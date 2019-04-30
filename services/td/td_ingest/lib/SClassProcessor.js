@@ -37,6 +37,7 @@ exports.parseMessage = function hangleSClassMessage (message, redisClient) {
 }
 
 function applySignalUpdate (areaId, signalId, status, messageTime, redisClient) {
+  const signalPubsubTopic = `signal.${areaId}.${signalId}`
   const statusSignalKey = `signal.${areaId}.${signalId}.status`
   const lastUpdateSignalKey = `signal.${areaId}.${signalId}.lastUpdate`
   const historySignalKey = `signal.${areaId}.${signalId}.history`
@@ -54,7 +55,7 @@ function applySignalUpdate (areaId, signalId, status, messageTime, redisClient) 
           time: messageTime.toISOString()
         }))
         .ltrim(historySignalKey, 0, 199)
-        .publish(statusSignalKey, status)
+        .publish(signalPubsubTopic, JSON.stringify({ status: status, area_id: areaId, signal: signalId }))
         .exec()
       logger.log('debug',
         { 'action': 'changed',
