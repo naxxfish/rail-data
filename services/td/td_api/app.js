@@ -46,10 +46,10 @@ pubsubRedisClient.psubscribe('signal.VC.*')
 pubsubRedisClient.psubscribe('berth.VC.*')
 const redisWebsocketDispatcher = (channel, message) => {
   if (channel.startsWith('signal')) {
-    logger.log('info', `sending websocket signal event to ${channel} room - ${message}`)
+    logger.log('debug', `sending websocket signal event to ${channel} room - ${message}`)
     io.to(`${channel}`).emit('signal', message)
   } else if (channel.startsWith('berth')) {
-    logger.log('info', `sending websocket berth event to ${channel} room - ${message}`)
+    logger.log('debug', `sending websocket berth event to ${channel} room - ${message}`)
     io.to(`${channel}`).emit('berth', message)
   }
 }
